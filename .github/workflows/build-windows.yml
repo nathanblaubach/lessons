@@ -18,11 +18,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install PyInstaller
-        run: pip install pyinstaller
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check formatting and lint
+        run: pre-commit run --all-files
 
       - name: Build executable
-        run: pyinstaller --onefile --windowed src/lessons.py
+        run: pyinstaller --onefile --windowed --name LessonHelper src/__main__.py
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
