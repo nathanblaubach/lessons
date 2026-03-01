@@ -24,6 +24,9 @@ jobs:
       - name: Check formatting and lint
         run: pre-commit run --all-files
 
+      - name: Run tests
+        run: pytest
+
       - name: Build executable
         run: pyinstaller --onefile --windowed --name LessonHelper src/__main__.py
 
