@@ -6,7 +6,9 @@ import sys
 
 class VideoSpeedModifier:
     def __init__(self):
-        if shutil.which("ffmpeg") is None and sys.platform == "win32":
+        if (
+            shutil.which("ffmpeg") is None and sys.platform == "win32"
+        ):  # pragma: no cover
             subprocess.run(
                 [
                     "winget",

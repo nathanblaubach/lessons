@@ -4,5 +4,3 @@ omit =
     src/__main__.py
     # GUI form, not unit testable
     src/lesson_video_file_selection_form.py
-    # Wraps ffmpeg CLI, not unit testable
-    src/video_speed_modifier.py
