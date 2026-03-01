@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, filedialog
 
-from lesson_file_selection import LessonFileSelection
+from lesson_video_file_selection import LessonFileSelection
 
 
 class LessonFileSelectionForm:
