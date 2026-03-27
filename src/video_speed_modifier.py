@@ -34,9 +34,19 @@ class VideoSpeedModifier:
                 "-i",
                 video_file_path,
                 "-vf",
-                f"setpts=PTS*{1 / speed}",
+                f"setpts=PTS*{1 / speed},format=yuv420p",  # scale presentation timestamps to change speed; convert to yuv420p for broad player compatibility
                 "-af",
-                f"atempo={speed}",
+                f"atempo={speed}",  # adjust audio tempo to match new speed while preserving pitch
+                "-c:v",
+                "libx264",  # encode video as H.264
+                "-profile:v",
+                "main",  # H.264 main profile for wide device compatibility
+                "-level",
+                "4.0",  # H.264 level 4.0 supports up to 1080p
+                "-g",
+                "30",  # keyframe every 30 frames, balancing seek performance and file size
+                "-c:a",
+                "aac",  # encode audio as AAC for broad compatibility
                 output_path,
             ]
         )
